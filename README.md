@@ -34,3 +34,19 @@
     - field : 분야 (금융, 증권, 산업/재계, 중기/벤처, 부동산, 글로벌 경제, 생활경제, 경제일반)
     - date : 날짜 (ex) 20230101) 
     - title : 뉴스 기사 제목
+
+- 테이블 이름 : finance_basic
+  - 설명: krx 기본 지표
+  - 컬럼:
+    - itemcode : 종목코드
+    - item_name : 종목명
+    - market_classification : 시장구분
+    - closing_price : 종가
+    - market_capitalization : 시가총액
+    - base_date : 기준일
+    - contrast : 대비
+    - fluctuation_rate : 등락률
+    - industry_name : 업종명
+    - item_classification : 종목구분 (ex) 코스피, 코스닥)
+
+
