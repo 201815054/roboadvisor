@@ -37,6 +37,7 @@
 
 - 테이블 이름 : finance_basic
   - 설명: krx 기본 지표
+  - 날짜: 2019 ~ 2023
   - 컬럼:
     - itemcode : 종목코드
     - item_name : 종목명
