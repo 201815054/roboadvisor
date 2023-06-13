@@ -16,14 +16,14 @@ naver news 크롤링
 def set_date(start_date, end_date):
     dates = []
 
-    start_date = datetime.date(*start_date)
-    end_date = datetime.date(*end_date)
+    start_date = datetime.date(*start_date) # 시작 날짜를 datetime.date 형식으로 변환
+    end_date = datetime.date(*end_date)     # 종료 날짜를 datetime.date 형식으로 변환
 
     current_date = start_date
     while current_date <= end_date:
-        date_str = current_date.strftime("%Y%m%d")
+        date_str = current_date.strftime("%Y%m%d") # 날짜를 "YYYYMMDD" 형식의 문자열로 변환
         dates.append(date_str)
-        current_date += datetime.timedelta(days=1)
+        current_date += datetime.timedelta(days=1) # 다음 날짜로 이동
 
     return dates
 
@@ -33,13 +33,14 @@ def save_titles(date, field, page):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     }
-    response = requests.get(url, headers=headers)
+    print(url)
+    response = requests.get(url, headers=headers) # 주어진 URL에 GET 요청을 보내고 응답을 받음
     html = response.text
 
-    soup = BeautifulSoup(html, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')     # BeautifulSoup을 사용하여 HTML 파싱
 
-    title_elements = soup.select('.list_body.newsflash_body ul li dl dt:not(.photo) a')
-    titles = [element.text for element in title_elements]
+    title_elements = soup.select('.list_body.newsflash_body ul li dl dt:not(.photo) a') # 기사 제목을 포함하는 HTML 요소 선택
+    titles = [element.text for element in title_elements]                               # 선택된 요소에서 기사 제목 추출
 
     return titles
 
@@ -101,13 +102,14 @@ if __name__ == "__main__":
 
     economy = {'금융':259, '증권':258, '산업/재계':261, '중기/벤처':771, '부동산':260, '글로벌 경제':262, '생활경제':310, '경제일반':263}
 
-    df = run([2023,1,1], [2023,5,31], economy)
+    df = run([2023,1,1], [2023,1,1], economy)
     print(df)
-
-    engine = create_engine("postgresql://postgres:1234@192.168.0.39:5432/postgres")
-    df.to_sql(name = 'news',
-            con = engine,
-            schema = 'public',
-            if_exists = 'append',
-            index = False
-            )
+    
+    # DB 연결
+    # engine = create_engine("postgresql://postgres:1234@192.168.0.39:5432/postgres")
+    # df.to_sql(name = 'news',
+    #         con = engine,
+    #         schema = 'public',
+    #         if_exists = 'append',
+    #         index = False
+    #         )
