@@ -12,7 +12,14 @@
 <!-- <<<<<<< chan -->
 
 - 테이블 이름 : finance_basic
-  - 설명: krx 기본 지표
+  - 설명: krx 기본 지표 
+  - 날짜: 2019 ~ 2023
+  - 컬럼:
+    - Date : 기준일
+    - Adj Close : 종가
+    - ticker : 종목코드
+    - MarketCap : 시가총액
+  <!-- - 설명: krx 기본 지표
   - 날짜: 2019 ~ 2023
   - 컬럼:
     - itemcode : 종목코드
@@ -24,7 +31,7 @@
     - contrast : 대비
     - fluctuation_rate : 등락률
     - industry_name : 업종명
-    - item_classification : 종목구분 (ex) 코스피, 코스닥)
+    - item_classification : 종목구분 (ex) 코스피, 코스닥) -->
 
 
 <!-- >>>>>>> main -->
